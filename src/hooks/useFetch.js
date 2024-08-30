@@ -9,7 +9,7 @@ export const useFetch = (url) => {
         error: null
     })
 
-    const {data, isLoading, error} = state
+    const { data, isLoading, error } = state
 
     const fetchData = async (url, method, bodyData = null) => {
         if (!url) return
