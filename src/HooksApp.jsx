@@ -1,6 +1,6 @@
-import { CounterApp } from "./components/CounterApp"
-import { FetchApp } from "./components/FetchApp"
-import { FormsApp } from "./components/FormsApp"
+import { CounterComponent } from "./components/CounterComponent"
+import { FetchComponent } from "./components/FetchComponent"
+import { FormsComponent } from "./components/FormsComponent"
 
 
 export const HooksApp = () => {
@@ -8,11 +8,11 @@ export const HooksApp = () => {
         <>
             <h1>App de Hooks</h1>
             <hr />
-            <FetchApp />
+            <FetchComponent />
             <hr />
-            <CounterApp/>
+            <CounterComponent />
             <hr />
-            <FormsApp/>
+            <FormsComponent />
         </>
     )
 }
