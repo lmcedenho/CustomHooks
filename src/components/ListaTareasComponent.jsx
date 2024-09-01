@@ -1,44 +1,12 @@
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../hooks/useForm"
-import { useReducer } from "react"
 
 export const ListaTareasComponent = () => {
 
-    const initialState = [
-        { id: 1, name: 'Explicar Reducers', finalizada: false }
-    ]
-
-    const tareaReducer = (state, action = {}) => {
-
-        switch (action.type) {
-            case '[TAREAS] Agregar Tarea':                
-                return [...state, action.payload]
-
-            case '[TAREAS] Finalizar Tarea':
-                return state.map(tarea => {
-                    if (tarea.id === action.payload) {
-                        return {
-                            ...tarea,
-                            finalizada: !tarea.finalizada
-                        }
-                    } else return tarea
-                })
-
-            case '[TAREAS] Eliminar Tarea':
-                return state.filter(tarea => tarea.id !== action.payload)
-
-            case '[TAREAS] borrar Tareas':
-                return []
-
-            default:
-                break;
-        }
-
-        return state
-    }
+    const tareas = useSelector(state => state)
+    const dispatch = useDispatch()
 
     const { tarea, onInputChange, setFormState } = useForm({ tarea: '' })
-
-    const [state, dispatch] = useReducer(tareaReducer, initialState)
 
     const addTask = (event) => {
         event.preventDefault()
@@ -102,7 +70,7 @@ export const ListaTareasComponent = () => {
             </form>
             <hr />
             <ol className="list-group">
-                {state.map(tarea => {
+                {tareas.map(tarea => {
                     return <li
                         className="list-group-item d-flex justify-content-between"
                         key={tarea.id}
